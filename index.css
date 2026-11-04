@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  ---break---
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+    --primary: 205 82% 21%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 89% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 20% 97%;
+    --muted-foreground: 215 14% 42%;
+    --accent: 186 56% 58%;
+    --accent-foreground: 205 82% 18%;
+    --beige: 38 50% 96%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 16% 90%;
+    --input: 220 16% 90%;
+    --ring: 205 82% 21%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 205 82% 21%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 97%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 220 16% 90%;
+    --sidebar-ring: 205 82% 21%;
+  }
+  .dark {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+    --primary: 205 82% 21%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 89% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 20% 97%;
+    --muted-foreground: 215 14% 42%;
+    --accent: 186 56% 58%;
+    --accent-foreground: 205 82% 18%;
+    --beige: 38 50% 96%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 16% 90%;
+    --input: 220 16% 90%;
+    --ring: 205 82% 21%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 205 82% 21%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 97%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 220 16% 90%;
+    --sidebar-ring: 205 82% 21%;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+}
+
+@layer utilities {
+  .font-display,
+  .font-cosomnia {
+    font-family: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+/* Gentle float */
+.float-slow {
+  animation: float-y 7s ease-in-out infinite;
+}
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Marquee */
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.sbh-bob {
+  animation: sbh-bob 5.5s ease-in-out infinite;
+}
+.sbh-drift {
+  animation: sbh-drift 9s ease-in-out infinite;
+}
+.sbh-spin {
+  animation: sbh-spin 18s linear infinite;
+}
+.sbh-book-mockup {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  transform: perspective(900px) rotateY(-7deg) rotateZ(-1deg);
+  transform-origin: left center;
+  filter: drop-shadow(0 22px 28px rgba(10, 61, 98, 0.28));
+  transition: transform 300ms ease, filter 300ms ease;
+}
+.sbh-book-mockup::before {
+  position: absolute;
+  z-index: -1;
+  top: 1%;
+  bottom: 1%;
+  left: 2%;
+  width: 8%;
+  border-radius: 2px 0 0 2px;
+  background: linear-gradient(90deg, hsl(205 82% 15%), hsl(205 82% 28%) 55%, hsl(38 50% 92%));
+  box-shadow: inset -2px 0 3px rgba(10, 30, 45, 0.22);
+  content: '';
+  transform: translateX(-48%) skewY(-1deg);
+}
+.sbh-mockup-cover {
+  display: block;
+  transition: transform 300ms ease;
+}
+.group:hover .sbh-book-mockup {
+  transform: perspective(900px) rotateY(-7deg) rotateZ(-1deg) translateY(-4px);
+}
+@keyframes sbh-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes sbh-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  50% {
+    transform: translate3d(8px, -16px, 0) rotate(8deg);
+  }
+}
+@keyframes sbh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .float-slow,
+  .sbh-bob,
+  .sbh-drift,
+  .sbh-spin {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
